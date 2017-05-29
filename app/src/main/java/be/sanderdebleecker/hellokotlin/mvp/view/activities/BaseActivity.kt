@@ -3,7 +3,6 @@ package be.sanderdebleecker.hellokotlin.mvp.view.activities
 import android.app.Application
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.annotation.CallSuper
 import android.support.v7.app.AppCompatActivity
 import be.sanderdebleecker.hellokotlin.core.application.SolitaireApplication
@@ -16,13 +15,14 @@ import butterknife.Unbinder
  * @version 1.0.0
  * @since 26/05/2017
  */
-abstract class BaseActivity : AppCompatActivity() {
+
+
+open class BaseActivity : AppCompatActivity() {
     private lateinit var mBinder: Unbinder
 
-
-
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    @Override
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(getContentView())
         mBinder = ButterKnife.bind(this)
         onViewReady(savedInstanceState, intent)
@@ -46,9 +46,10 @@ abstract class BaseActivity : AppCompatActivity() {
             throw Exception("BaseActivity depends on SolitaireApplication to be defined!")
         }
     }
+     open fun resolveDaggerDependencies() {
 
-    abstract fun resolveDaggerDependencies()
-    abstract fun getContentView(): Int
-
-
+     }
+     open fun getContentView(): Int {
+         TODO("implement")
+     }
 }

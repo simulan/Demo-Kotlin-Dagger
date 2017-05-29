@@ -10,11 +10,8 @@ import be.sanderdebleecker.hellokotlin.mvp.presenter.SolitairePresenter
 import be.sanderdebleecker.hellokotlin.mvp.view.views.SolitaireView
 import javax.inject.Inject
 
-open class SolitaireActivity constructor() : BaseActivity(), SolitaireView {
-    @Inject constructor(presenter : SolitairePresenter) : this() {
-        mPresenter = presenter
-    }
-    protected lateinit var mPresenter: SolitairePresenter
+open class SolitaireActivity : BaseActivity(), SolitaireView {
+    @Inject protected lateinit var mPresenter: SolitairePresenter
 
     //BaseActivity
     override fun onViewReady(savedInstanceState: Bundle?, intent: Intent?) {

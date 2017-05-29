@@ -1,6 +1,7 @@
 package be.sanderdebleecker.hellokotlin.core.di.modules
 
 import be.sanderdebleecker.hellokotlin.core.di.scopes.PerActivity
+import be.sanderdebleecker.hellokotlin.mvp.presenter.SolitairePresenter
 import be.sanderdebleecker.hellokotlin.mvp.view.views.SolitaireView
 import dagger.Module
 import dagger.Provides

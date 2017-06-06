@@ -16,7 +16,7 @@ object GameModel {
         foundationPiles.forEach { it.reset() }
         deck.reset()
 
-        tableauPiles.forEachIndexed({ i, tableauPile ->
+        tableauPiles.forEachIndexed({ i, _ ->
             val cardsInPile: MutableList<Card> = Array(i + 1, { deck.drawCard() }).toMutableList()
             tableauPiles[i] = TableauPile(cardsInPile)
         })

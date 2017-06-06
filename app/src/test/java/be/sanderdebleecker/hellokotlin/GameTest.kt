@@ -13,7 +13,7 @@ class GameTest {
     fun kingInFirstFoundationPile() {
         // arrange
         var numGames = 0
-        var maxGames = 1000
+        val maxGames = 1000
         // act
         for (i in 1..maxGames) {
             numGames++
@@ -26,7 +26,7 @@ class GameTest {
                 }
             }
             if(GameModel.foundationPiles[0].cards.size==13) {
-                break;
+                break
             }
         }
         // assert

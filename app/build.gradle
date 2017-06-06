@@ -13,6 +13,8 @@ dependencies {
     implementation "com.google.dagger:dagger:$daggerVersion"
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     testCompile 'junit:junit:4.12'
+    testCompile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 }
@@ -35,8 +37,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/app_debug.kotlin_module'
+    }
+    task copyTestClasses(type: Copy) {
+        from "build/tmp/kotlin-classes/debugUnitTest"
+        into "build/intermediates/classes/debug"
+    }
+
+    task copySdkClasses(type: Copy) {
+        from "build/tmp/kotlin-classes/debug"
+        into "build/intermediates/classes/debug"
+    }
 }
+
 
 kapt {
     generateStubs = true
 }
+
+

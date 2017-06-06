@@ -6,17 +6,19 @@ import android.widget.Toast
 import be.sanderdebleecker.hellokotlin.R
 import be.sanderdebleecker.hellokotlin.core.di.components.DaggerSolitaireComponent
 import be.sanderdebleecker.hellokotlin.core.di.modules.SolitaireModule
+import be.sanderdebleecker.hellokotlin.mvp.model.GameModel
 import be.sanderdebleecker.hellokotlin.mvp.presenter.SolitairePresenter
 import be.sanderdebleecker.hellokotlin.mvp.view.views.SolitaireView
 import javax.inject.Inject
 
 open class SolitaireActivity : BaseActivity(), SolitaireView {
+
     @Inject protected lateinit var mPresenter: SolitairePresenter
 
     //BaseActivity
     override fun onViewReady(savedInstanceState: Bundle?, intent: Intent?) {
         super.onViewReady(savedInstanceState, intent)
-        mPresenter.hello()
+        mPresenter.start()
         //bind things here if necessary
     }
 
@@ -35,4 +37,7 @@ open class SolitaireActivity : BaseActivity(), SolitaireView {
     override fun showToast(msg: String) {
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show()
     }
+    override fun update(model: GameModel) {
+    }
+
 }
